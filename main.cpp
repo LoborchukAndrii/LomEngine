@@ -1,6 +1,9 @@
-#include <cstdio>
+#include <iostream>
 
-int main(int argc, char *argv[])
+using namespace std;
+
+int main()
 {
-	std::printf("Hello world!!!");
+    cout << "Hello World!" << endl;
+    return 0;
 }

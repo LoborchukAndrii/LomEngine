@@ -1,6 +1,21 @@
 # Prerequisites
 *.d
 
+# Cmake
+/build/
+/out/
+
+CMakeCache.txt
+CMakeFiles/
+CMakeScripts/
+Makefile
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+CMakeLists.txt.user
+
+LomEngine
+
 # Compiled Object files
 *.slo
 *.lo
