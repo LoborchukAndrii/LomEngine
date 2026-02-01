@@ -18,3 +18,9 @@ target_link_libraries(LomEngine PRIVATE SDL3::SDL3-shared)
 # 4. Include paths (Optional, usually handled by target_link_libraries)
 target_include_directories(LomEngine PUBLIC "libs/SDL/include")
 
+if(WIN32)
+add_custom_command(TARGET LomEngine POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different
+        $<TARGET_FILE:SDL3::SDL3-shared>
+        $<TARGET_FILE_DIR:LomEngine>)
+endif()

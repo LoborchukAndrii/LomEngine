@@ -4,6 +4,7 @@
 # Cmake
 /build/
 /out/
+/.vs
 
 CMakeCache.txt
 CMakeFiles/
