@@ -1,21 +1,41 @@
+module;
+
 // TODO: remove
-#include <iostream>
 #include <SDL3/SDL.h>
+
+import Performance;
 
 export module Renderer:Core;
 
 export class GameRenderer
 {
 public:
-	GameRenderer();
-	~GameRenderer();
+	GameRenderer() : _window(nullptr), _GPUDevice(nullptr)
+	{
+	}
+	~GameRenderer()
+	{
+		SDL_DestroyGPUDevice(_GPUDevice);
+
+		SDL_DestroyWindow(_window);
+	}
 
 	void InitGameWindow() {
-		_window = SDL_CreateWindow("LOM Engine", 960, 540, SDL_WINDOW_RESIZABLE);
 
-		// create the device
-		_GPUDevice = SDL_CreateGPUDevice(SDL_GPU_SHADERFORMAT_SPIRV, false, NULL);
-		SDL_ClaimWindowForGPUDevice(_GPUDevice, _window);
+		_window = SDL_CreateWindow("LOM Engine", 800, 600, SDL_WINDOW_RESIZABLE);
+
+		SDL_Surface* icon = SDL_LoadPNG("Content/Icons/MyRobot.png");
+
+		if (!icon) {
+			SDL_Log("Failed to load icon: %s", SDL_GetError());
+		}
+
+		SDL_SetWindowIcon(_window, icon);
+	};
+
+	void Draw() {
+		ScopeTimeTracker _("GPU");
+
 	};
 
 private:
@@ -24,13 +44,3 @@ private:
 	SDL_GPUDevice* _GPUDevice;
 };
 
-GameRenderer::GameRenderer()
-{
-}
-
-GameRenderer::~GameRenderer()
-{
-	SDL_DestroyGPUDevice(_GPUDevice);
-
-	SDL_DestroyWindow(_window);
-}

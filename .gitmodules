@@ -1,3 +1,10 @@
 [submodule "libs/SDL"]
 	path = libs/SDL
 	url = https://github.com/libsdl-org/SDL.git
+
+[submodule "libs/NRI"]
+	path = libs/NRI
+	url = https://github.com/NVIDIA-RTX/NRI.git
+[submodule "libs/ImGui"]
+	path = libs/ImGui
+	url = https://github.com/ocornut/imgui.git
